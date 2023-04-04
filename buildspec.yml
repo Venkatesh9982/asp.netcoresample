@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      dotnet: 3.1   
+    commands:
+      - dotnet tool install -g Amazon.ElasticBeanstalk.Tools
+  build:
+    commands:
+      - cd ExampleNETCoreDeployWithAWSCodePipeline
+      - dotnet eb package
+artifacts:
+  files:
+    - ./ExampleNETCoreDeployWithAWSCodePipeline/bin/Release/netcoreapp3.1/publish/*
+  discard-paths: yes
